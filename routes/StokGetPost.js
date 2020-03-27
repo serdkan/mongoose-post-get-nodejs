@@ -13,6 +13,15 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/:StokAdi', async (req, res) => {
+    try {
+        const posts = await Post.find(StokAdi);
+        res.json(posts);
+    } catch (err) {
+        res.json({ message: err })
+    }
+});
+
 router.post('/', async (req, res) => {
 
     const post = new Post({
